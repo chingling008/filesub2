@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 200, "left": 20, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -63.77, "left": -99.2, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 138.35,
+      "left": 220.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 1.5,
+      "left": 351.1,
+      "attrs": { "distance": "400" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": -24.8, "left": 242.22, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 194.4,
+      "left": -228.6,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 92.4, "left": 522.2, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "uno:GND.1", "lcd:VSS", "black", [ "v-51", "*", "h0", "v18" ] ],
+    [ "uno:GND.1", "lcd:K", "black", [ "v-51", "*", "h0", "v18" ] ],
+    [ "uno:GND.1", "lcd:RW", "black", [ "v-51", "*", "h0", "v18" ] ],
+    [ "uno:5V", "lcd:VDD", "red", [ "v16", "h-16" ] ],
+    [ "uno:5V", "r1:2", "red", [ "v16", "h-118", "v-244", "h50" ] ],
+    [ "r1:1", "lcd:A", "pink", [] ],
+    [ "uno:12", "lcd:RS", "blue", [ "v-16", "*", "h0", "v20" ] ],
+    [ "uno:11", "lcd:E", "purple", [ "v-20", "*", "h0", "v20" ] ],
+    [ "uno:10", "lcd:D4", "green", [ "v-24", "*", "h0", "v20" ] ],
+    [ "uno:9", "lcd:D5", "brown", [ "v-28", "*", "h0", "v20" ] ],
+    [ "uno:8", "lcd:D6", "gold", [ "v-32", "*", "h0", "v20" ] ],
+    [ "uno:7", "lcd:D7", "gray", [ "v-36", "*", "h0", "v20" ] ],
+    [ "ultrasonic1:VCC", "uno:5V", "red", [ "v374.4", "h-240" ] ],
+    [ "ultrasonic1:TRIG", "uno:3", "green", [ "v86.4", "h-182.8" ] ],
+    [ "ultrasonic1:ECHO", "uno:2", "green", [ "v96", "h-183.2" ] ],
+    [ "ultrasonic1:GND", "uno:GND.3", "black", [ "v336", "h-260.4" ] ],
+    [ "pir1:GND", "uno:GND.2", "black", [ "v76.8", "h-0.26", "v297.6", "h-105.6" ] ],
+    [ "pir1:VCC", "uno:5V", "red", [ "v48", "h48", "v336", "h-144" ] ],
+    [ "pir1:OUT", "uno:1", "green", [ "v105.6", "h-28.94" ] ],
+    [ "led1:A", "uno:5", "green", [ "v38.4", "h-316.8" ] ],
+    [ "led1:C", "uno:GND.3", "black", [ "v403.2", "h-335.6" ] ],
+    [ "bz1:2", "uno:6", "gold", [ "v-134.4", "h76.4" ] ],
+    [ "bz1:1", "uno:GND.2", "black", [ "v278.4", "h393.6", "v-9.6" ] ]
+  ],
+  "dependencies": {}
+}
